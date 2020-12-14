@@ -1,0 +1,21 @@
+---
+layout: base.njk
+templateClass: tmpl-index
+eleventyNavigation:
+  key: Home
+  order: 1
+---
+
+{% set maxPosts = collections.articles.length | min(10) %}
+<h2 class="blogsection">最近の投稿一覧</h2>
+
+{% set articlesList = collections.articles | head(-10) %}
+{% for article in articlesList | reverse %}
+  <div class="articleList">
+    <h3 class="articleTitle">
+      <a href="{{ article.url | url }}" class="articleLink">{% if article.data.title %}{{ article.data.title }}{% else %}<code>{{ article.url }}</code>{% endif %}</a>
+    </h3>
+    <time class="articleDate" datetime="{{ article.date }}">{{ article.date | htmlDateString }}</time>
+  </div>
+{% endfor %}
+<p><a href="https://soyoil.net">soyoil.net にもどる</a></p>

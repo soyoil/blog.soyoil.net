@@ -1,0 +1,21 @@
+---
+layout: base.njk
+templateClass: tmpl-article
+---
+
+<h1>{{ title }}</h1>
+<p>投稿日：{{ date }}</p>
+<hr>
+<br>
+
+{{ content | safe }}
+<br>
+<hr>
+<br>
+<ul>
+  {%- set nextArticle = collections.articles | getNextCollectionItem(page) %}
+  {%- if nextArticle %}<li>次: <a href="{{ nextArticle.url | url }}">{{ nextArticle.data.title }}</a></li>{% endif %}
+  {%- set previousArticle = collections.articles | getPreviousCollectionItem(page) %}
+  {%- if previousArticle %}<li>前: <a href="{{ previousArticle.url | url }}">{{ previousArticle.data.title }}</a></li>{% endif %}
+</ul>
+<br>
