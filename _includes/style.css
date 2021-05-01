@@ -44,5 +44,6 @@ div.container {
   background: #eee !important;
   color: #606c76;
   margin: 0 .5rem;
+  padding: 0 .5rem;
   font-family: Consolas,Monaco,Andale Mono,Ubuntu Mono,monospace;
 }
